@@ -8,5 +8,8 @@
 <body>
     <h2>Это тестовая страница</h2>
     <div>версия 2</div>
+    {% for todo in todo_list %}
+        <h1>{{ todo.text }} - {{ todo.created_at}}</h1>
+    {% endfor %}    
 </body>
 </html>
