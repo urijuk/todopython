@@ -6,12 +6,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Books</title>
+    <style>
+        .box_book{
+            margin-left: 50px;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid black;
+            width: max-content;
+            border-radius: 20px;
+            background-color: lightgreen;
+        }
+        .create_container{
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        h3{
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+        h2{margin-top: 0px;
+
+        }
+    </style>
 </head>
 
 <body>
-    {% for books in books_list %}
-    <div class="">
-        <h4>{{ books.text }}</h4>
+        <div class="create_container">
+            <form action="{% url 'add-book' %}" method="POST">
+                {% csrf_token %}
+                <input class="create_input" type="text" placeholder="Напишите заголовок" name="book_text" />
+                <input class="create_input" type="text" placeholder="Напишите подзаголовок" name="book_text" />
+                <input class="create_input" type="text" placeholder="Напишите описание" name="book_text" />
+                <input class="create_input" type="text" placeholder="Напишите цену" name="book_text" />
+                <input class="create_input" type="text" placeholder="Напишите жанр" name="book_text" />
+                <input class="create_input" type="text" placeholder="Напишите автора" name="book_text" />
+                <input class="create_input" type="text" placeholder="Год выхода книги" name="book_text" />
+                <button id="create_button">Добавить</button>
+            </form>
+        </div>
+        
+    {% for book in books_list %}
+    <div class="box_book">
+        <h2>{{ book.text }}</h2>
+        <h3>{{ book.subtitle }}</h3>
+        <h3>{{ book.description }}</h3>
+        <h3>{{ book.price }}</h3>
+        <h3>{{ book.genre }}</h3>
+        <h3>{{ book.author }}</h3>
+        <h3>{{ book.year }}</h3>
+        <h3>{{ book.created_at }}</h3>
     </div>
     {% endfor %}
 
