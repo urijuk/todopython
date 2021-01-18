@@ -34,9 +34,47 @@ def add_todo(request):
     todo.save()
     return redirect(test)
 
+
+
 def add_book(request):
     form=request.POST
     text=form["book_text"]
+    book=Book(text=text)
+    book.save()
+    return redirect(books)
+def add_book(request):
+    form=request.POST
+    text=form["book.subtitle"]
+    book=Book(text=text)
+    book.save()
+    return redirect(books)
+def add_book(request):
+    form=request.POST
+    text=form["book.description"]
+    book=Book(text=text)
+    book.save()
+    return redirect(books)
+def add_book(request):
+    form=request.POST
+    text=form["book.price"]
+    book=Book(text=text)
+    book.save()
+    return redirect(books)
+def add_book(request):
+    form=request.POST
+    text=form["book.genre"]
+    book=Book(text=text)
+    book.save()
+    return redirect(books)
+def add_book(request):
+    form=request.POST
+    text=form["book.author"]
+    book=Book(text=text)
+    book.save()
+    return redirect(books)
+def add_book(request):
+    form=request.POST
+    text=form["book.year"]
     book=Book(text=text)
     book.save()
     return redirect(books)

@@ -36,12 +36,12 @@
             <form action="{% url 'add-book' %}" method="POST">
                 {% csrf_token %}
                 <input class="create_input" type="text" placeholder="Напишите заголовок" name="book_text" />
-                <input class="create_input" type="text" placeholder="Напишите подзаголовок" name="book_text" />
-                <input class="create_input" type="text" placeholder="Напишите описание" name="book_text" />
-                <input class="create_input" type="text" placeholder="Напишите цену" name="book_text" />
-                <input class="create_input" type="text" placeholder="Напишите жанр" name="book_text" />
-                <input class="create_input" type="text" placeholder="Напишите автора" name="book_text" />
-                <input class="create_input" type="text" placeholder="Год выхода книги" name="book_text" />
+                <input class="create_input" type="text" placeholder="Напишите подзаголовок" name="book.subtitle" />
+                <input class="create_input" type="text" placeholder="Напишите описание" name="book.description" />
+                <input class="create_input" type="text" placeholder="Напишите цену" name="book.price" />
+                <input class="create_input" type="text" placeholder="Напишите жанр" name="book.genre" />
+                <input class="create_input" type="text" placeholder="Напишите автора" name="book.author" />
+                <input class="create_input" type="text" placeholder="Год выхода книги" name="book.year" />
                 <button id="create_button">Добавить</button>
             </form>
         </div>
