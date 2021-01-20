@@ -39,42 +39,18 @@ def add_todo(request):
 def add_book(request):
     form=request.POST
     text=form["book_text"]
-    book=Book(text=text)
+    subtitle=form["book.subtitle"] 
+    description=form["book.description"]
+    price=form["book.price"]
+    genre=form["book.genre"]
+    author=form["book.author"]
+    year=form["book.year"]
+    book=Book(text=text, subtitle=subtitle, description=description, price=price, genre=genre, author=author, year=year)
     book.save()
     return redirect(books)
-def add_book(request):
-    form=request.POST
-    text=form["book.subtitle"]
-    book=Book(text=text)
-    book.save()
-    return redirect(books)
-def add_book(request):
-    form=request.POST
-    text=form["book.description"]
-    book=Book(text=text)
-    book.save()
-    return redirect(books)
-def add_book(request):
-    form=request.POST
-    text=form["book.price"]
-    book=Book(text=text)
-    book.save()
-    return redirect(books)
-def add_book(request):
-    form=request.POST
-    text=form["book.genre"]
-    book=Book(text=text)
-    book.save()
-    return redirect(books)
-def add_book(request):
-    form=request.POST
-    text=form["book.author"]
-    book=Book(text=text)
-    book.save()
-    return redirect(books)
-def add_book(request):
-    form=request.POST
-    text=form["book.year"]
-    book=Book(text=text)
-    book.save()
-    return redirect(books)
+
+def delete_todo(request, id):
+    todo=ToDo.objects.get(id=id)
+    todo.delete()
+    return redirect(test)
+

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Books</title>
     <style>
-        .box_book{
+        .box_book {
             margin-left: 50px;
             margin-top: 20px;
             padding: 10px;
@@ -16,48 +16,60 @@
             border-radius: 20px;
             background-color: lightgreen;
         }
-        .create_container{
+
+        .create_container {
             display: flex;
             justify-content: space-around;
             margin-top: 20px;
         }
-        h3{
+
+        h3 {
             margin-top: 0px;
             margin-bottom: 0px;
         }
-        h2{margin-top: 0px;
+
+        h2 {
+            margin-top: 0px;
 
         }
+        .book_container{
+        padding: 30px 20px;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        width: 100%;}
     </style>
 </head>
 
 <body>
-        <div class="create_container">
-            <form action="{% url 'add-book' %}" method="POST">
-                {% csrf_token %}
-                <input class="create_input" type="text" placeholder="Напишите заголовок" name="book_text" />
-                <input class="create_input" type="text" placeholder="Напишите подзаголовок" name="book.subtitle" />
-                <input class="create_input" type="text" placeholder="Напишите описание" name="book.description" />
-                <input class="create_input" type="text" placeholder="Напишите цену" name="book.price" />
-                <input class="create_input" type="text" placeholder="Напишите жанр" name="book.genre" />
-                <input class="create_input" type="text" placeholder="Напишите автора" name="book.author" />
-                <input class="create_input" type="text" placeholder="Год выхода книги" name="book.year" />
-                <button id="create_button">Добавить</button>
-            </form>
-        </div>
-        
-    {% for book in books_list %}
-    <div class="box_book">
-        <h2>{{ book.text }}</h2>
-        <h3>{{ book.subtitle }}</h3>
-        <h3>{{ book.description }}</h3>
-        <h3>{{ book.price }}</h3>
-        <h3>{{ book.genre }}</h3>
-        <h3>{{ book.author }}</h3>
-        <h3>{{ book.year }}</h3>
-        <h3>{{ book.created_at }}</h3>
+    <div class="create_container">
+        <form action="{% url 'add-book' %}" method="POST">
+            {% csrf_token %}
+            <input class="create_input" type="text" placeholder="Напишите заголовок" name="book_text" />
+            <input class="create_input" type="text" placeholder="Напишите подзаголовок" name="book.subtitle" />
+            <input class="create_input" type="text" placeholder="Напишите описание" name="book.description" />
+            <input class="create_input" type="text" placeholder="Напишите цену" name="book.price" />
+            <input class="create_input" type="text" placeholder="Напишите жанр" name="book.genre" />
+            <input class="create_input" type="text" placeholder="Напишите автора" name="book.author" />
+            <input class="create_input" type="text" placeholder="Год выхода книги" name="book.year" />
+            <button id="create_button">Добавить</button>
+        </form>
     </div>
-    {% endfor %}
+
+    <div class="book_container">
+        {% for book in books_list %}
+        <div class="box_book">
+            <h2>{{ book.text }}</h2>
+            <h3>{{ book.subtitle }}</h3>
+            <h3>{{ book.description }}</h3>
+            <h3>{{ book.price }}</h3>
+            <h3>{{ book.genre }}</h3>
+            <h3>{{ book.author }}</h3>
+            <h3>{{ book.year }}</h3>
+            <h3>{{ book.created_at }}</h3>
+        </div>
+        {% endfor %}
+    </div>
 
 </body>
 
