@@ -38,12 +38,8 @@
                 <div class="todo_item_footer">
                     <p>{{ todo.created_at }}</p>
                     <div class="action_buttons">
-                        <!-- <img src="../static/icons/star.png" alt="">
-                        <img src="..//static/icons/basket.png" alt=""> -->
-                        <!-- {% if todo.is_favorite %} -->
-                        <a href="{% url 'mark-todo' todo.id %}"><div class="img1"></div></a>
-                        
-                        <a href="{% url 'delete-todo' todo.id %}"><div class="img"></div></a>
+                        <a href="{% url 'mark-todo' todo.id %}"><img src="{% static './icons/ofstar.png' %}" alt=""></a>
+                        <a href="{% url 'delete-todo' todo.id %}"><img src="{% static './icons/basket.png' %}" alt=""></a>
                     </div>
                 </div>
             </div>
