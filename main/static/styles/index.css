@@ -81,32 +81,16 @@ section{
     font-size: 15px;
     font-family: sans-serif;
 }
-.action_buttons{
+.todo_item_footer .action_buttons{
     display: flex;
-    flex-direction: row;
+    /* flex-direction: row;
     width: 30px;
-    height: 30px;
+    height: 30px; */
 
 }
-.img{
-    width: 30px;
-    height: 30px;
+.todo_item_footer img{
+    width: 25px;
+    height: 25px;
     margin: 0 5px;
     cursor: pointer;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-image: url(../icons/basket.png);
-}
-.img1{
-    width: 30px;
-    height: 30px;
-    margin: 0 5px;
-    cursor: pointer;
-    background-image: url(https://cdn.icon-icons.com/icons2/38/PNG/512/star_favorite_5754.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-}    
-.img1:active{
-    transition: all 100ms linear 0s ;
-    background-image: url(../icons/yellow.png);
 }
