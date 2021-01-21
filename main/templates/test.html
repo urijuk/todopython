@@ -1,50 +1,65 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TEST</title>
-    <link rel="stylesheet" href="{% static '../static/styles/index.css' %}">
-    <link rel="stylesheet" href="{% static '../static/styles/chackbox.css' %}">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo</title>
+    <!-- <link rel="stylesheet" href="./styles/index.css" /> -->
+    <link rel="stylesheet" href="{% static 'styles/index.css' %}" />
+    <!-- <link rel="stylesheet" href="./styles/checkbox.css"> -->
+    <link rel="stylesheet" href="{% static 'styles/checkbox.css' %}">
 </head>
-
 <body>
     <section>
         <div class="create_container">
-            <form action="{% url 'add-todo' %}" method="POST">
-                {% csrf_token %}
-                <input class="create_input" type="text" placeholder="Напишите сюда новую задачу" name="todo_text" />
-                <button id="create_button">Добавить</button>
-            </form>
+          <form action="{% url 'add-todo' %}" method="POST">
+            {% csrf_token %}
+            <input
+                class="create_input"
+                type="text"
+                placeholder="Напишите сюда новую задачу"
+                name="todo_text"
+            />
+            <button class="create_button">Добавить</button>
+          </form>
         </div>
-        <!------------>
         <div class="todo_container">
-            {% for todo in todo_list %}
+
+            {% for todo in todo_list %} 
             <div class="todo_item
                 {% if todo.is_favorite %}
                     marked
-                {% endif %}">
+                {% elif todo.is_closed %}
+                    done
+                {% endif %}
+            
+            ">
                 <div class="todo_item_header">
                     <label class="checkbox_container">
-                        <input type="checkbox" checked="checked">
+                        <input type="checkbox" 
+                            {% if todo.is_closed %}
+                                checked
+                            {% endif %}
+                        />
                         <span class="checkmark"></span>
                     </label>
-                    <h4>{{ todo.text }}</h4>
+                    <h4><a href="">{{ todo.text }}</a></h4>
                 </div>
                 <div class="todo_item_footer">
                     <p>{{ todo.created_at }}</p>
                     <div class="action_buttons">
-                        <a href="{% url 'mark-todo' todo.id %}"><img src="{% static './icons/ofstar.png' %}" alt=""></a>
-                        <a href="{% url 'delete-todo' todo.id %}"><img src="{% static './icons/basket.png' %}" alt=""></a>
+                        {% if todo.is_favorite %}
+                            <a href="{% url 'mark-todo' todo.id %}"><img src="{% static './icons/marked.png' %}" /></a>
+                        {% else %}
+                            <a href="{% url 'mark-todo' todo.id %}"><img src="{% static './icons/unmarked.png' %}" /></a>
+                        {% endif %}
+                        
+                        <a href="{% url 'delete-todo' todo.id %}"><img src="{% static './icons/delete.png' %}" /></a>
                     </div>
                 </div>
             </div>
-            {% endfor %}
+        {% endfor %}
         </div>
-    </section>
-    <script src="./todo.js"></script>
-</body>
-
+      </section>
 </html>
