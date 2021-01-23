@@ -1,0 +1,75 @@
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: #263238
+}
+.box_book {
+    margin-left: 50px;
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid rgb(1, 112, 16);
+    width: 200px;
+    border-radius: 20px;
+    background-color: lightgreen;
+
+}
+
+
+.create_container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+h3 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+h2 {
+    margin-top: 0px;
+    text-transform: uppercase;
+    color: #f86700;
+}
+
+.book_container {
+    padding: 30px 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.action_buttons{
+    margin: 5px;
+}
+.action_buttons img{
+    width: 25px;
+    height: 25px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+input{
+    margin: 2px;
+    padding: 5px;
+    border: 1px solid #478a4a;
+}
+button{
+    padding: 5px;
+    text-transform: uppercase;
+    border: 1px solid #478a4a;
+    background-color: #fa8531e5;
+    border-radius: 5px;
+}
+.marked{
+    background-color: #FFE082;
+    border: 1px solid #fd7302;
+    
+}
+/* body{
+    background-image: url(https://st.depositphotos.com/1032932/3463/i/600/depositphotos_34635755-stock-photo-library.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: alpha(opacity=30);
+} */

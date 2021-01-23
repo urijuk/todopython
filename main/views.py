@@ -46,11 +46,21 @@ def mark_todo(request, id):
     todo.save()
     return redirect(test)
 
+def unmark_todo(request, id):
+    todo=ToDo.objects.get(id=id)
+    todo.is_favorite=False
+    todo.save()
+    return redirect(test)
+
 def close_todo(request, id):
     todo = ToDo.objects.get(id=id)
     todo.is_closed = not todo.is_closed
     todo.save()
     return redirect(test)
+
+def todo(request, id):
+    todo_object=ToDo.objects.get(id=id)
+    return render(request, "todok.html", {"todo_object": todo_object})
 
 
 
@@ -67,8 +77,7 @@ def add_book(request):
     genre=form["book.genre"]
     author=form["book.author"]
     year=form["book.year"]
-    is_favorite=["is_favorite"]
-    book=Book(text=text, subtitle=subtitle, description=description, price=price, genre=genre, author=author, year=year, is_favorite=is_favorite)
+    book=Book(text=text, subtitle=subtitle, description=description, price=price, genre=genre, author=author, year=year,)
     book.save()
     return redirect(books)
 
@@ -83,8 +92,18 @@ def mark_book(request, id):
     book.save()
     return redirect(books)
 
+def unmark_book(request, id):
+    book=Book.objects.get(id=id)
+    book.is_favorite=False
+    book.save()
+    return redirect(books)    
+
 def close_book(request, id):
     book = Book.objects.get(id=id)
     book.is_closed = not todo.is_closed
     book.save()
     return redirect(books)
+
+def bookmore(request, id):
+    book_object=Book.objects.get(id=id)
+    return render(request, "bookmore.html", {"book_object": book_object})    

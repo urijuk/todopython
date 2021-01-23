@@ -6,39 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Books</title>
-    <style>
-        .box_book {
-            margin-left: 50px;
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid black;
-            width: max-content;
-            border-radius: 20px;
-            background-color: lightgreen;
-        }
-
-        .create_container {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 20px;
-        }
-
-        h3 {
-            margin-top: 0px;
-            margin-bottom: 0px;
-        }
-
-        h2 {
-            margin-top: 0px;
-
-        }
-        .book_container{
-        padding: 30px 20px;
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        width: 100%;}
-    </style>
+    <link rel="stylesheet" href="{% static 'styles/book.css' %}" />
 </head>
 
 <body>
@@ -58,8 +26,14 @@
 
     <div class="book_container">
         {% for book in books_list %}
-        <div class="box_book">
-            <h2>{{ book.text }}</h2>
+        <div class="box_book
+        {% if book.is_favorite %}
+        marked
+        {% elif book.is_closed %}
+        done
+        {% endif %}
+        ">
+            <h2>"{{ book.text }}"</h2>
             <h3>{{ book.subtitle }}</h3>
             <h3>{{ book.description }}</h3>
             <h3>{{ book.price }}</h3>
@@ -68,18 +42,17 @@
             <h3>{{ book.year }}</h3>
             <h3>{{ book.created_at }}</h3>
             <div class="action_buttons">
-                {% if books.is_favorite %}
-                    <a href="{% url 'mark-book' book.id %}"><img src="{% static './icons/marked.png' %}" /></a>
+                {% if book.is_favorite %}
+                <a href="{% url 'unmark-book' book.id %}"><img src="{% static './icons/marked.png' %}" /></a>
                 {% else %}
-                    <a href="{% url 'mark-book' book.id %}"><img src="{% static './icons/unmarked.png' %}" /></a>
+                <a href="{% url 'mark-book' book.id %}"><img src="{% static './icons/unmarked.png' %}" /></a>
                 {% endif %}
-                
-                <a href="{% url 'delete-book' .id %}"><img src="{% static './icons/delete.png' %}" /></a>
+
+                <a href="{% url 'delete-book' book.id %}"><img src="{% static './icons/delete.png' %}" /></a>
+                <a href="{% url 'bookmore' book.id %}">***</a>
             </div>
         </div>
         {% endfor %}
-
-        
     </div>
 
 </body>
