@@ -4,10 +4,6 @@ from .models import ToDo, Book
 def homepage(request):
     return render(request, "todo.html")
 
-def test(request):
-    todo_list=ToDo.objects.all()
-    return render(request, "test.html", {"todo_list": todo_list})
-
 def second(request):
     return HttpResponse("test 2 page")
 
@@ -23,9 +19,14 @@ def change(request):
 def delete(request):
     return render(request, "delete.html")
 
-def books(request):
-    books_list=Book.objects.all()
-    return render(request, "books.html", {"books_list": books_list})
+
+
+
+
+
+def test(request):
+    todo_list=ToDo.objects.all()
+    return render(request, "test.html", {"todo_list": todo_list})
 
 def add_todo(request):
     form=request.POST
@@ -33,21 +34,6 @@ def add_todo(request):
     todo=ToDo(text=text)
     todo.save()
     return redirect(test)
-
-
-
-def add_book(request):
-    form=request.POST
-    text=form["book_text"]
-    subtitle=form["book.subtitle"] 
-    description=form["book.description"]
-    price=form["book.price"]
-    genre=form["book.genre"]
-    author=form["book.author"]
-    year=form["book.year"]
-    book=Book(text=text, subtitle=subtitle, description=description, price=price, genre=genre, author=author, year=year)
-    book.save()
-    return redirect(books)
 
 def delete_todo(request, id):
     todo=ToDo.objects.get(id=id)
@@ -60,3 +46,45 @@ def mark_todo(request, id):
     todo.save()
     return redirect(test)
 
+def close_todo(request, id):
+    todo = ToDo.objects.get(id=id)
+    todo.is_closed = not todo.is_closed
+    todo.save()
+    return redirect(test)
+
+
+
+def books(request):
+    books_list=Book.objects.all()
+    return render(request, "books.html", {"books_list": books_list})
+
+def add_book(request):
+    form=request.POST
+    text=form["book_text"]
+    subtitle=form["book.subtitle"] 
+    description=form["book.description"]
+    price=form["book.price"]
+    genre=form["book.genre"]
+    author=form["book.author"]
+    year=form["book.year"]
+    is_favorite=["is_favorite"]
+    book=Book(text=text, subtitle=subtitle, description=description, price=price, genre=genre, author=author, year=year, is_favorite=is_favorite)
+    book.save()
+    return redirect(books)
+
+def delete_book(request, id):
+    book=Book.objects.get(id=id)
+    book.delete()
+    return redirect(books)
+
+def mark_book(request, id):
+    book=Book.objects.get(id=id)
+    book.is_favorite=True
+    book.save()
+    return redirect(books)
+
+def close_book(request, id):
+    book = Book.objects.get(id=id)
+    book.is_closed = not todo.is_closed
+    book.save()
+    return redirect(books)

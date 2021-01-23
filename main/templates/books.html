@@ -67,8 +67,19 @@
             <h3>{{ book.author }}</h3>
             <h3>{{ book.year }}</h3>
             <h3>{{ book.created_at }}</h3>
+            <div class="action_buttons">
+                {% if books.is_favorite %}
+                    <a href="{% url 'mark-book' book.id %}"><img src="{% static './icons/marked.png' %}" /></a>
+                {% else %}
+                    <a href="{% url 'mark-book' book.id %}"><img src="{% static './icons/unmarked.png' %}" /></a>
+                {% endif %}
+                
+                <a href="{% url 'delete-book' .id %}"><img src="{% static './icons/delete.png' %}" /></a>
+            </div>
         </div>
         {% endfor %}
+
+        
     </div>
 
 </body>
