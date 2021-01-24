@@ -1,18 +1,30 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'styles/book.css' %}" />
 </head>
+
 <body>
-    <h1>{{ book_object.text }}</h1>
-    <h2>{{ book_object.subtitle }}</h2>
-    <h2>{{ book_object.description }}</h2>
-    <h2>{{ book_object.price }}</h2>
-    <h2>{{ book_object.genre }}</h2>
-    <h2>{{ book_object.author }}</h2>
-    <h2>{{ book_object.year }}</h2>
-    <h2>{{ book_object.created_at }}</h2>
+    <div class="head">
+        <img class="imgbook" src="../static/icons/bTyLk6R8c.png" alt="">
+        БИБЛИОТЕКА
+        <img class="imgbook" src="../static/icons/bTyLk6R8c.png" alt="">
+    </div>
+    <div class="bookone">
+        <h1>{{ book_object.text }}</h1>
+        <h2>{{ book_object.subtitle }}</h2>
+        <h2>{{ book_object.description }}</h2>
+        <h2>{{ book_object.price }}</h2>
+        <h2>{{ book_object.genre }}</h2>
+        <h2>{{ book_object.author }}</h2>
+        <h2>{{ book_object.year }}</h2>
+        <h2>{{ book_object.created_at }}</h2>
+    </div>
 </body>
+
 </html>

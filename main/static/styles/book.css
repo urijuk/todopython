@@ -65,11 +65,24 @@ button{
 .marked{
     background-color: #FFE082;
     border: 1px solid #fd7302;
-    
 }
-/* body{
-    background-image: url(https://st.depositphotos.com/1032932/3463/i/600/depositphotos_34635755-stock-photo-library.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    filter: alpha(opacity=30);
-} */
+.head{
+    height: 100px;
+    font-size: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.116);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(89, 175, 3);
+    font-family: Arial, Helvetica, sans-serif;
+    z-index: 3;
+}
+.imgbook{
+    width: 70px;
+    margin: 40px;
+}
+.bookone{
+    margin: 100px;
+    padding: 20px;
+    background-color: rgb(202, 235, 168);
+}
