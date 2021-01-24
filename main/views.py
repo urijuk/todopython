@@ -100,7 +100,7 @@ def unmark_book(request, id):
 
 def close_book(request, id):
     book = Book.objects.get(id=id)
-    book.is_closed = not todo.is_closed
+    book.is_closed = not book.is_closed
     book.save()
     return redirect(books)
 

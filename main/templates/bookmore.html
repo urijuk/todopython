@@ -16,14 +16,26 @@
         <img class="imgbook" src="../static/icons/bTyLk6R8c.png" alt="">
     </div>
     <div class="bookone">
-        <h1>{{ book_object.text }}</h1>
-        <h2>{{ book_object.subtitle }}</h2>
-        <h2>{{ book_object.description }}</h2>
-        <h2>{{ book_object.price }}</h2>
-        <h2>{{ book_object.genre }}</h2>
-        <h2>{{ book_object.author }}</h2>
-        <h2>{{ book_object.year }}</h2>
-        <h2>{{ book_object.created_at }}</h2>
+        <div class="book">
+            <h1>Заголовок: </h1>
+            <h2>Подзаголовок: </h2>
+            <h2>Описание: </h2>
+            <h2>Цена: </h2>
+            <h2>Жанр: </h2>
+            <h2>Автор: </h2>
+            <h2>Год издание: </h2>
+            <h2>Добавленно на сайт: </h2>
+        </div>
+        <div class="book">
+            <h1>"{{ book_object.text }}"</h1>
+            <h2>{{ book_object.subtitle }}</h2>
+            <h2>{{ book_object.description }}</h2>
+            <h2>{{ book_object.price }}</h2>
+            <h2>{{ book_object.genre }}</h2>
+            <h2>{{ book_object.author }}</h2>
+            <h2>{{ book_object.year }}</h2>
+            <h2>{{ book_object.created_at }}</h2>
+        </div>
     </div>
 </body>
 

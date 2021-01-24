@@ -28,10 +28,11 @@ h3 {
     margin-bottom: 0px;
 }
 
-h2 {
+h2 a{
     margin-top: 0px;
     text-transform: uppercase;
     color: #f86700;
+    text-decoration: none;
 }
 
 .book_container {
@@ -82,7 +83,18 @@ button{
     margin: 40px;
 }
 .bookone{
-    margin: 100px;
-    padding: 20px;
+    margin: 100px 400px;
+    padding: 30px;
     background-color: rgb(202, 235, 168);
+    display: flex;
+    flex-direction: row;
+}
+.done{
+    background-color: #E0E0E0;
+    text-decoration: line-through;
+    color: #757575;
+    border: solid 1px #fd7302;
+}
+.book{
+    padding-left: 20px;
 }

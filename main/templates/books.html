@@ -7,13 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Books</title>
     <link rel="stylesheet" href="{% static 'styles/book.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/checkbook.css' %}">
 </head>
 
 <body>
     <div class="head">
         <img class="imgbook" src="../static/icons/bTyLk6R8c.png" alt="">
         БИБЛИОТЕКА
-        <img class="imgbook" src="../static/icons/bTyLk6R8c.png" alt=""></div>
+        <img class="imgbook" src="../static/icons/bTyLk6R8c.png" alt="">
+    </div>
     <div class="create_container">
         <form action="{% url 'add-book' %}" method="POST">
             {% csrf_token %}
@@ -38,7 +40,11 @@
         done
         {% endif %}
         ">
-            <h2>"{{ book.text }}"</h2>
+            <label class="checkbox_container">
+                <input type="checkbox" {% if book.is_closed %} checked {% endif %} />
+                <span class="checkmark"></span>
+            </label>
+            <h2><a href="{% url 'close-book' book.id %}">"{{ book.text }}"</a></h2>
             <h3>{{ book.subtitle }}</h3>
             <h3>{{ book.description }}</h3>
             <h3>{{ book.price }}</h3>
