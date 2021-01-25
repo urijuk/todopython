@@ -28,44 +28,50 @@
             <input class="create_input" type="text" placeholder="Год выхода книги" name="book.year" />
             <button id="create_button">Добавить</button>
         </form>
-        <div class="back"></div>
     </div>
-
-    <div class="book_container">
-        {% for book in books_list %}
-        <div class="box_book
+    <div class="with">
+        <div class="tema">
+            {% for tema in books_list %}
+            <h3>-{{ tema.text }}</h3><br>
+            {% endfor %}
+        </div>
+        <div class="added">
+            <div class="book_container">
+                {% for book in books_list %}
+                <div class="box_book
         {% if book.is_favorite %}
         marked
         {% elif book.is_closed %}
         done
         {% endif %}
         ">
-            <label class="checkbox_container">
-                <input type="checkbox" {% if book.is_closed %} checked {% endif %} />
-                <span class="checkmark"></span>
-            </label>
-            <h2><a href="{% url 'close-book' book.id %}">"{{ book.text }}"</a></h2>
-            <h3>{{ book.subtitle }}</h3>
-            <h3>{{ book.description }}</h3>
-            <h3>{{ book.price }}</h3>
-            <h3>{{ book.genre }}</h3>
-            <h3>{{ book.author }}</h3>
-            <h3>{{ book.year }}</h3>
-            <h3>{{ book.created_at }}</h3>
-            <div class="action_buttons">
-                {% if book.is_favorite %}
-                <a href="{% url 'unmark-book' book.id %}"><img src="{% static './icons/marked.png' %}" /></a>
-                {% else %}
-                <a href="{% url 'mark-book' book.id %}"><img src="{% static './icons/unmarked.png' %}" /></a>
-                {% endif %}
+                    <label class="checkbox_container">
+                        <input type="checkbox" {% if book.is_closed %} checked {% endif %} />
+                        <span class="checkmark"></span>
+                    </label>
+                    <h2><a href="{% url 'close-book' book.id %}">"{{ book.text }}"</a></h2>
+                    <h3>{{ book.subtitle }}</h3>
+                    <h3>{{ book.description }}</h3>
+                    <h3>{{ book.price }}</h3>
+                    <h3>{{ book.genre }}</h3>
+                    <h3>{{ book.author }}</h3>
+                    <h3>{{ book.year }}</h3>
+                    <h3>{{ book.created_at }}</h3>
+                    <div class="action_buttons">
+                        {% if book.is_favorite %}
+                        <a href="{% url 'unmark-book' book.id %}"><img src="{% static './icons/marked.png' %}" /></a>
+                        {% else %}
+                        <a href="{% url 'mark-book' book.id %}"><img src="{% static './icons/unmarked.png' %}" /></a>
+                        {% endif %}
 
-                <a href="{% url 'delete-book' book.id %}"><img src="{% static './icons/delete.png' %}" /></a>
-                <a href="{% url 'bookmore' book.id %}"><img src="{% static './icons/strelka.png' %}" /></a>
+                        <a href="{% url 'delete-book' book.id %}"><img src="{% static './icons/delete.png' %}" /></a>
+                        <a href="{% url 'bookmore' book.id %}"><img src="{% static './icons/strelka.png' %}" /></a>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
         </div>
-        {% endfor %}
     </div>
-
 </body>
 
 </html>

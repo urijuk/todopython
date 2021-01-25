@@ -106,4 +106,6 @@ def close_book(request, id):
 
 def bookmore(request, id):
     book_object=Book.objects.get(id=id)
-    return render(request, "bookmore.html", {"book_object": book_object})    
+    return render(request, "bookmore.html", {"book_object": book_object}) 
+
+ 
